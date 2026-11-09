@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran IPA SMP</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header & Navigation -->
+    <header class="bg-emerald-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="bg-white text-emerald-600 p-2 rounded-lg font-bold text-xl shadow-sm">
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg leading-tight">IPA SMP Smart</h1>
+                        <p class="text-xs text-emerald-100">Media Pembelajaran Interaktif</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-2">
+                    <button onclick="navigateTo('home')" id="nav-home" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-emerald-700 transition">Beranda</button>
+                    <button onclick="navigateTo('materi')" id="nav-materi" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-emerald-700 transition">Materi Pembelajaran</button>
+                    <button onclick="navigateTo('simulasi')" id="nav-simulasi" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-emerald-700 transition">Simulasi Lab</button>
+                    <button onclick="navigateTo('kuis')" id="nav-kuis" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-emerald-700 transition">Kuis Interaktif</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-md hover:bg-emerald-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-emerald-700 px-4 pt-2 pb-4 space-y-1">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-emerald-800">Beranda</button>
+            <button onclick="navigateTo('materi'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-emerald-800">Materi Pembelajaran</button>
+            <button onclick="navigateTo('simulasi'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-emerald-800">Simulasi Lab</button>
+            <button onclick="navigateTo('kuis'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-emerald-800">Kuis Interaktif</button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= BERANDA SECTION ================= -->
+        <section id="page-home" class="space-y-8">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-emerald-500 to-teal-700 rounded-2xl p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-4 max-w-xl">
+                    <span class="bg-emerald-800/40 text-emerald-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Kurikulum Merdeka / K-13</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">Eksplorasi Dunia Sains dengan Cara yang Seru!</h2>
+                    <p class="text-emerald-100 text-sm md:text-base">Pelajari materi IPA SMP mencakup Biologi, Fisika, dan Kimia lengkap dengan rangkuman interaktif, simulasi visual, dan kuis uji kemampuan.</p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="navigateTo('materi')" class="bg-white text-emerald-700 hover:bg-emerald-50 font-semibold px-5 py-2.5 rounded-lg shadow transition flex items-center gap-2">
+                            <i class="fa-solid fa-book-open"></i> Mulai Belajar
+                        </button>
+                        <button onclick="navigateTo('simulasi')" class="bg-emerald-800/40 hover:bg-emerald-800/60 text-white font-semibold px-5 py-2.5 rounded-lg transition flex items-center gap-2 border border-white/20">
+                            <i class="fa-solid fa-vial"></i> Coba Lab Visual
+                        </button>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <div class="relative w-48 h-48 md:w-64 md:h-64 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 shadow-inner">
+                        <i class="fa-solid fa-microscope text-7xl md:text-8xl text-white opacity-90 animate-pulse"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories / Quick Access -->
+            <div>
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-emerald-600"></i> Cabang Ilmu IPA
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card Biologi -->
+                    <div onclick="selectCategory('biologi')" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer group">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-2xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-slate-800 group-hover:text-emerald-600 transition">Biologi (Makhluk Hidup)</h4>
+                        <p class="text-slate-600 text-sm mb-4">Mempelajari sel, sistem organ manusia, ekosistem, fotosintesis, dan keanekaragaman hayati.</p>
+                        <span class="text-emerald-600 text-xs font-semibold flex items-center gap-1 group-hover:translate-x-1 transition">Lihat Materi <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <!-- Card Fisika -->
+                    <div onclick="selectCategory('fisika')" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer group">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-slate-800 group-hover:text-emerald-600 transition">Fisika (Energi & Gaya)</h4>
+                        <p class="text-slate-600 text-sm mb-4">Memahami gaya, gerak, energi, suhu, kalor, gelombang, dan listrik secara intuitif.</p>
+                        <span class="text-emerald-600 text-xs font-semibold flex items-center gap-1 group-hover:translate-x-1 transition">Lihat Materi <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <!-- Card Kimia -->
+                    <div onclick="selectCategory('kimia')" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer group">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-atom"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-slate-800 group-hover:text-emerald-600 transition">Kimia (Zat & Sifatnya)</h4>
+                        <p class="text-slate-600 text-sm mb-4">Mengenal atom, molekul, wujud zat, asam-basa, serta unsur dan senyawa di sekitar kita.</p>
+                        <span class="text-emerald-600 text-xs font-semibold flex items-center gap-1 group-hover:translate-x-1 transition">Lihat Materi <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MATERI SECTION ================= -->
+        <section id="page-materi" class="hidden space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Materi Pembelajaran IPA</h2>
+                    <p class="text-sm text-slate-500">Pilih modul materi di bawah ini untuk memulai belajar</p>
+                </div>
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterMateri('all')" id="btn-filter-all" class="px-4 py-1.5 rounded-lg text-sm font-medium bg-emerald-600 text-white shadow-sm">Semua</button>
+                    <button onclick="filterMateri('biologi')" id="btn-filter-biologi" class="px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-600 hover:bg-slate-200">Biologi</button>
+                    <button onclick="filterMateri('fisika')" id="btn-filter-fisika" class="px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-600 hover:bg-slate-200">Fisika</button>
+                    <button onclick="filterMateri('kimia')" id="btn-filter-kimia" class="px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-600 hover:bg-slate-200">Kimia</button>
+                </div>
+            </div>
+
+            <!-- Material Cards Grid -->
+            <div id="materi-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Injected by JavaScript -->
+            </div>
+
+            <!-- Material Detail Modal / View -->
+            <div id="materi-detail" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+                    <div class="bg-emerald-600 text-white p-4 px-6 flex justify-between items-center">
+                        <h3 id="modal-title" class="text-xl font-bold">Judul Materi</h3>
+                        <button onclick="closeMateriDetail()" class="text-white hover:text-slate-200 text-2xl font-bold">&times;</button>
+                    </div>
+                    <div id="modal-body" class="p-6 overflow-y-auto custom-scrollbar space-y-4 text-slate-700">
+                        <!-- Content inserted via JS -->
+                    </div>
+                    <div class="bg-slate-50 p-4 border-t border-slate-200 text-right">
+                        <button onclick="closeMateriDetail()" class="px-5 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium rounded-lg transition">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SIMULASI SECTION ================= -->
+        <section id="page-simulasi" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                    <i class="fa-solid fa-flask-vial text-emerald-600"></i> Lab Praktikum Interaktif: Hukum Ohm (Fisika)
+                </h2>
+                <p class="text-slate-600 text-sm">Simulasikan hubungan antara Tegangan (V), Hambatan (R), dan Arus Listrik (I) berdasarkan rumus $I = \frac{V}{R}$.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Control Panel -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-6">
+                    <h3 class="font-bold text-slate-800 text-lg border-b pb-2">Pengaturan Parameter</h3>
+                    
+                    <!-- Tegangan Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-medium text-slate-700">Tegangan (V):</label>
+                            <span id="val-voltage" class="text-emerald-600 font-bold">9.0 Volt</span>
+                        </div>
+                        <input type="range" id="slider-voltage" min="1" max="24" step="0.5" value="9" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600" oninput="updateSimulasi()">
+                    </div>
+
+                    <!-- Hambatan Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-medium text-slate-700">Hambatan (R):</label>
+                            <span id="val-resistance" class="text-blue-600 font-bold">10.0 Ohm</span>
+                        </div>
+                        <input type="range" id="slider-resistance" min="1" max="100" step="1" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="updateSimulasi()">
+                    </div>
+
+                    <!-- Result Box -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center space-y-1">
+                        <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Arus Listrik (I)</span>
+                        <div id="val-current" class="text-3xl font-extrabold text-amber-500">0.90 A</div>
+                        <p class="text-xs text-slate-500">Rumus: I = V / R</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Visual Canvas -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-[320px]">
+                    <h3 class="font-bold text-slate-800 text-lg border-b pb-2">Visualisasi Rangkaian & Lampu</h3>
+                    
+                    <div class="flex-grow flex flex-col items-center justify-center py-8">
+                        <!-- Lamp Visual -->
+                        <div class="relative flex items-center justify-center">
+                            <!-- Glow Effect -->
+                            <div id="bulb-glow" class="absolute w-32 h-32 rounded-full bg-yellow-400 opacity-50 blur-xl transition-all duration-200"></div>
+                            <!-- Bulb Icon -->
+                            <i id="bulb-icon" class="fa-solid fa-lightbulb text-8xl text-yellow-400 relative z-10 transition-all duration-200"></i>
+                        </div>
+                        
+                        <div class="mt-6 text-center">
+                            <p id="bulb-status" class="font-medium text-slate-700">Lampu menyala dengan kecerahan sedang.</p>
+                            <p class="text-xs text-slate-500 mt-1">Makin besar arus listrik (I), makin terang nyala lampu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Circuit Info Footer -->
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100 text-center text-xs text-slate-600">
+                        <div>Status Sakelar: <span class="font-semibold text-emerald-600">Tertutup (ON)</span></div>
+                        <div>Tipe Rangkaian: <span class="font-semibold text-slate-800">Seri Sederhana</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= KUIS SECTION ================= -->
+        <section id="page-kuis" class="hidden space-y-6">
+            <!-- Quiz Start Box -->
+            <div id="quiz-start-box" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center max-w-2xl mx-auto space-y-4">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800">Uji Pemahaman IPA SMP</h2>
+                <p class="text-slate-600 text-sm">Kuis ini terdiri dari 5 soal pilihan ganda interaktif. Uji seberapa jauh pemahaman kamu tentang materi Biologi, Fisika, dan Kimia!</p>
+                <button onclick="startQuiz()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow-md transition transform hover:-translate-y-0.5">
+                    Mulai Kuis Sekarang
+                </button>
+            </div>
+
+            <!-- Quiz Play Box -->
+            <div id="quiz-play-box" class="hidden bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm max-w-2xl mx-auto space-y-6">
+                <!-- Progress Header -->
+                <div class="flex justify-between items-center text-sm font-semibold text-slate-500 border-b pb-4">
+                    <span>Soal <span id="quiz-current-num">1</span> dari <span id="quiz-total-num">5</span></span>
+                    <span id="quiz-category-tag" class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Biologi</span>
+                </div>
+
+                <!-- Question Text -->
+                <h3 id="quiz-question-text" class="text-lg font-bold text-slate-800 leading-snug">
+                    Pertanyaan akan muncul di sini...
+                </h3>
+
+                <!-- Options List -->
+                <div id="quiz-options" class="space-y-3">
+                    <!-- Options injected by JS -->
+                </div>
+
+                <!-- Next Button -->
+                <div class="flex justify-end pt-4 border-t">
+                    <button id="btn-next-quiz" onclick="nextQuestion()" disabled class="px-5 py-2.5 bg-emerald-600 opacity-50 cursor-not-allowed text-white font-semibold rounded-lg transition">
+                        Pertanyaan Selanjutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Result Box -->
+            <div id="quiz-result-box" class="hidden bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center max-w-2xl mx-auto space-y-6">
+                <div class="w-20 h-20 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center text-4xl mx-auto">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800">Hasil Kuis Kamu</h2>
+                
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 inline-block w-full max-w-xs">
+                    <span class="text-sm text-slate-500 uppercase font-semibold">Skor Akhir</span>
+                    <div id="quiz-final-score" class="text-5xl font-extrabold text-emerald-600 my-2">0</div>
+                    <p id="quiz-feedback-text" class="text-xs text-slate-600 font-medium">Kerja bagus! Tingkatkan terus belajarmu.</p>
+                </div>
+
+                <div class="flex justify-center gap-4">
+                    <button onclick="startQuiz()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow transition">
+                        Coba Lagi
+                    </button>
+                    <button onclick="navigateTo('materi')" class="px-5 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded-lg transition">
+                        Pelajari Materi
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm space-y-2">
+            <p>&copy; 2026 Media Pembelajaran IPA SMP Interaktif. Siap di-deploy ke Vercel.</p>
+            <p class="text-xs text-slate-500">Dibuat dengan HTML5, Tailwind CSS, & JavaScript ES6.</p>
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT CODE ================= -->
+    <script>
+        // Data Materi IPA SMP
+        const materiData = [
+            {
+                id: 1,
+                title: "Sel sebagai Unit Terkecil Kehidupan",
+                category: "biologi",
+                icon: "fa-disease",
+                summary: "Memahami struktur sel hewan dan tumbuhan serta fungsinya masing-masing.",
+                content: `
+                    <p class="mb-3">Sel adalah unit struktural dan fungsional terkecil dari makhluk hidup. Berdasarkan ada tidaknya membran inti, sel dibedakan menjadi sel prokariotik dan eukariotik.</p>
+                    <h4 class="font-bold text-slate-800 mb-2">Bagian-bagian Utama Sel:</h4>
+                    <ul class="list-disc pl-5 space-y-1 mb-4">
+                        <li><strong>Membran Sel:</strong> Mengatur keluar masuknya zat.</li>
+                        <li><strong>Sitoplasma:</strong> Cairan sel tempat berlangsungnya reaksi metabolisme.</li>
+                        <li><strong>Inti Sel (Nukleus):</strong> Pusat pengatur seluruh aktivitas sel.</li>
+                        <li><strong>Mitokondria:</strong> Organel penghasil energi (respirasi sel).</li>
+                    </ul>
+                    <p class="text-sm bg-emerald-50 text-emerald-800 p-3 rounded-lg"><strong>Catatan Penting:</strong> Sel tumbuhan memiliki dinding sel dan kloroplas untuk fotosintesis, sedangkan sel hewan tidak memilikinya.</p>
+                `
+            },
+            {
+                id: 2,
+                title: "Fotosintesis pada Tumbuhan Green",
+                category: "biologi",
+                icon: "fa-seedling",
+                summary: "Proses tumbuhan hijau mengubah energi cahaya menjadi makanan (glukosa).",
+                content: `
+                    <p class="mb-3">Fotosintesis adalah proses pembuatan makanan oleh tumbuhan hijau dengan bantuan cahaya matahari, air, dan karbon dioksida.</p>
+                    <h4 class="font-bold text-slate-800 mb-2">Persamaan Reaksi Fotosintesis:</h4>
+                    <div class="bg-slate-100 p-3 rounded-lg font-mono text-xs md:text-sm mb-4 text-center">
+                        6CO₂ + 6H₂O + Cahaya Sun → C₆H₁₂O₆ + 6O₂
+                    </div>
+                    <p class="mb-2">Fotosintesis terjadi pada organel sel yang disebut <strong>Kloroplas</strong> yang mengandung pigmen klorofil.</p>
+                `
+            },
+            {
+                id: 3,
+                title: "Gaya, Gerak, dan Hukum Newton",
+                category: "fisika",
+                icon: "fa-car-side",
+                summary: "Hubungan antara massa benda, gaya yang bekerja, dan percepatan yang dihasilkan.",
+                content: `
+                    <p class="mb-3">Gaya adalah dorongan atau tarikan yang dapat menyebabkan perubahan posisi, arah, atau bentuk benda.</p>
+                    <h4 class="font-bold text-slate-800 mb-2">Hukum-Hukum Newton tentang Gerak:</h4>
+                    <ol class="list-decimal pl-5 space-y-2 mb-4">
+                        <li><strong>Hukum I Newton (Kelembaman):</strong> Benda cenderung mempertahankan kondisinya jika gaya total nol ($\Sigma F = 0$).</li>
+                        <li><strong>Hukum II Newton:</strong> Percepatan sebanding dengan gaya dan berbanding terbalik dengan massa ($F = m \times a$).</li>
+                        <li><strong>Hukum III Newton (Aksi-Reaksi):</strong> Setiap gaya aksi akan menimbulkan gaya reaksi yang sama besar namun berlawanan arah.</li>
+                    </ol>
+                `
+            },
+            {
+                id: 4,
+                title: "Listrik Dinamis & Hukum Ohm",
+                category: "fisika",
+                icon: "fa-bolt-lightning",
+                summary: "Konsep muatan listrik yang mengalir, kuat arus, tegangan, dan hambatan.",
+                content: `
+                    <p class="mb-3">Listrik dinamis adalah muatan-muatan listrik yang bergerak (arus listrik) dalam suatu rangkaian tertutup.</p>
+                    <h4 class="font-bold text-slate-800 mb-2">Formula Hukum Ohm:</h4>
+                    <div class="bg-blue-50 text-blue-900 p-3 rounded-lg font-semibold text-center mb-4">
+                        V = I × R &nbsp;|&nbsp; I = V / R &nbsp;|&nbsp; R = V / I
+                    </div>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><strong>V:</strong> Tegangan Listrik (Volt)</li>
+                        <li><strong>I:</strong> Kuat Arus Listrik (Ampere)</li>
+                        <li><strong>R:</strong> Hambatan Listrik (Ohm)</li>
+                    </ul>
+                `
+            },
+            {
+                id: 5,
+                title: "Wujud Zat dan Perubahannya",
+                category: "kimia",
+                icon: "fa-cube",
+                summary: "Mengenal wujud padat, cair, gas, serta proses perubahan fisika dan kimianya.",
+                content: `
+                    <p class="mb-3">Materi di alam dikelompokkan menjadi tiga wujud utama: Padat, Cair, dan Gas.</p>
+                    <h4 class="font-bold text-slate-800 mb-2">Perubahan Wujud Zat:</h4>
+                    <ul class="list-disc pl-5 space-y-1 mb-4">
+                        <li><strong>Mencair:</strong> Padat → Cair</li>
+                        <li><strong>Membeku:</strong> Cair → Padat</li>
+                        <li><strong>Menguap:</strong> Cair → Gas</li>
+                        <li><strong>Mengembun:</strong> Gas → Cair</li>
+                        <li><strong>Menyublim:</strong> Padat → Gas</li>
+                    </ul>
+                `
+            },
+            {
+                id: 6,
+                title: "Asam, Basa, dan Garam",
+                category: "kimia",
+                icon: "fa-flask-vial",
+                summary: "Identifikasi sifat larutan menggunakan indikator asam-basa (lakmus/pH).",
+                content: `
+                    <p class="mb-3">Larutan kimia dapat bersifat asam, basa, atau netral (garam) berdasarkan derajat keasaman (pH).</p>
+                    <div class="grid grid-cols-2 gap-4 my-3 text-sm">
+                        <div class="bg-red-50 p-3 rounded-lg border border-red-200">
+                            <h5 class="font-bold text-red-700">Asam (pH < 7)</h5>
+                            <p>Rasanya masam, mengubah lakmus biru menjadi merah.</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg border border-blue-200">
+                            <h5 class="font-bold text-blue-700">Basa (pH > 7)</h5>
+                            <p>Rasanya agak pahit, terasa licin, mengubah lakmus merah menjadi biru.</p>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Data Kuis IPA SMP
+        const quizQuestions = [
+            {
+                question: "Organel sel yang berfungsi sebagai tempat terjadinya respirasi sel untuk menghasilkan energi adalah...",
+                options: ["Kloroplas", "Mitokondria", "Ribosom", "Lisosom"],
+                answer: 1,
+                category: "Biologi"
+            },
+            {
+                question: "Sebuah benda ditarik dengan gaya F = 20 N dan memiliki massa m = 4 kg. Berapakah percepatan (a) benda tersebut?",
+                options: ["2 m/s²", "4 m/s²", "5 m/s²", "80 m/s²"],
+                answer: 2,
+                category: "Fisika"
+            },
+            {
+                question: "Gas yang dihasilkan dari proses fotosintesis pada tumbuhan hijau adalah...",
+                options: ["Karbon Dioksida (CO₂)", "Oksigen (O₂)", "Nitrogen (N₂)", "Hidrogen (H₂)"],
+                answer: 1,
+                category: "Biologi"
+            },
+            {
+                question: "Suatu larutan memiliki pH = 3. Sifat dari larutan tersebut adalah...",
+                options: ["Basa kuat", "Netral", "Asam", "Basa lemah"],
+                answer: 2,
+                category: "Kimia"
+            },
+            {
+                question: "Jika tegangan pada rangkaian tetap 12 Volt dan hambatannya dinaikkan menjadi 2 kali lipat, maka arus listrik akan...",
+                options: ["Menjadi 2 kali lebih besar", "Menjadi 1/2 kali semula", "Tetap sama", "Menjadi 4 kali lebih besar"],
+                answer: 1,
+                category: "Fisika"
+            }
+        ];
+
+        // Quiz State Variables
+        let currentQuestionIdx = 0;
+        let score = 0;
+        let selectedOptionIdx = null;
+
+        // Navigation Controller
+        function navigateTo(pageId) {
+            const pages = ['home', 'materi', 'simulasi', 'kuis'];
+            pages.forEach(p => {
+                const el = document.getElementById(`page-${p}`);
+                const navEl = document.getElementById(`nav-${p}`);
+                if (p === pageId) {
+                    el.classList.remove('hidden');
+                    if (navEl) navEl.classList.add('bg-emerald-700', 'font-semibold');
+                } else {
+                    el.classList.add('hidden');
+                    if (navEl) navEl.classList.remove('bg-emerald-700', 'font-semibold');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Render & Filter Materi
+        function renderMateri(list) {
+            const grid = document.getElementById('materi-grid');
+            grid.innerHTML = '';
+            
+            list.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs uppercase font-bold px-2.5 py-1 rounded-full ${
+                                item.category === 'biologi' ? 'bg-green-100 text-green-700' :
+                                item.category === 'fisika' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700'
+                            }">
+                                ${item.category}
+                            </span>
+                            <i class="fa-solid ${item.icon} text-slate-400 text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">${item.title}</h3>
+                        <p class="text-slate-600 text-sm mb-4">${item.summary}</p>
+                    </div>
+                    <button onclick="openMateriDetail(${item.id})" class="w-full py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold text-sm rounded-lg transition border border-emerald-200">
+                        Baca Selengkapnya
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterMateri(cat) {
+            ['all', 'biologi', 'fisika', 'kimia'].forEach(c => {
+                const btn = document.getElementById(`btn-filter-${c}`);
+                if (c === cat) {
+                    btn.className = "px-4 py-1.5 rounded-lg text-sm font-medium bg-emerald-600 text-white shadow-sm";
+                } else {
+                    btn.className = "px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-600 hover:bg-slate-200";
+                }
+            });
+
+            if (cat === 'all') {
+                renderMateri(materiData);
+            } else {
+                renderMateri(materiData.filter(m => m.category === cat));
+            }
+        }
+
+        function selectCategory(cat) {
+            navigateTo('materi');
+            filterMateri(cat);
+        }
+
+        function openMateriDetail(id) {
+            const item = materiData.find(m => m.id === id);
+            if (!item) return;
+
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-body').innerHTML = item.content;
+            document.getElementById('materi-detail').classList.remove('hidden');
+        }
+
+        function closeMateriDetail() {
+            document.getElementById('materi-detail').classList.add('hidden');
+        }
+
+        // Lab Simulation Logic (Hukum Ohm)
+        function updateSimulasi() {
+            const v = parseFloat(document.getElementById('slider-voltage').value);
+            const r = parseFloat(document.getElementById('slider-resistance').value);
+            
+            const i = v / r; // Formula I = V / R
+
+            document.getElementById('val-voltage').innerText = `${v.toFixed(1)} Volt`;
+            document.getElementById('val-resistance').innerText = `${r.toFixed(1)} Ohm`;
+            document.getElementById('val-current').innerText = `${i.toFixed(2)} A`;
+
+            // Visual adjustment for Bulb Light Intensity
+            const glow = document.getElementById('bulb-glow');
+            const bulb = document.getElementById('bulb-icon');
+            const statusText = document.getElementById('bulb-status');
+
+            // Scale opacity & size based on Current (I)
+            const opacity = Math.min(Math.max(i / 2, 0.1), 1.0);
+            const blurSize = Math.min(i * 15, 50);
+
+            glow.style.opacity = opacity;
+            glow.style.filter = `blur(${blurSize}px)`;
+            
+            if (i < 0.3) {
+                statusText.innerText = "Lampu redup (Arus listrik sangat kecil).";
+            } else if (i < 1.0) {
+                statusText.innerText = "Lampu menyala sedang (Arus listrik normal).";
+            } else {
+                statusText.innerText = "Lampu menyala sangat terang! (Arus listrik besar).";
+            }
+        }
+
+        // Quiz Interactive System
+        function startQuiz() {
+            currentQuestionIdx = 0;
+            score = 0;
+            document.getElementById('quiz-start-box').classList.add('hidden');
+            document.getElementById('quiz-result-box').classList.add('hidden');
+            document.getElementById('quiz-play-box').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            selectedOptionIdx = null;
+            const q = quizQuestions[currentQuestionIdx];
+            
+            document.getElementById('quiz-current-num').innerText = currentQuestionIdx + 1;
+            document.getElementById('quiz-total-num').innerText = quizQuestions.length;
+            document.getElementById('quiz-category-tag').innerText = q.category;
+            document.getElementById('quiz-question-text').innerText = q.question;
+
+            const optsContainer = document.getElementById('quiz-options');
+            optsContainer.innerHTML = '';
+
+            const btnNext = document.getElementById('btn-next-quiz');
+            btnNext.disabled = true;
+            btnNext.classList.add('opacity-50', 'cursor-not-allowed');
+
+            q.options.forEach((optText, idx) => {
+                const optBtn = document.createElement('button');
+                optBtn.className = "w-full text-left p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition flex items-center justify-between group";
+                optBtn.onclick = () => selectOption(idx, optBtn);
+                optBtn.innerHTML = `
+                    <span class="font-medium text-slate-700 group-hover:text-emerald-800">${String.fromCharCode(65 + idx)}. ${optText}</span>
+                    <i class="fa-regular fa-circle text-slate-300 group-hover:text-emerald-500 text-lg"></i>
+                `;
+                optsContainer.appendChild(optBtn);
+            });
+        }
+
+        function selectOption(idx, btnElement) {
+            selectedOptionIdx = idx;
+            const optsContainer = document.getElementById('quiz-options');
+            
+            // Clear prior selection
+            Array.from(optsContainer.children).forEach(child => {
+                child.className = "w-full text-left p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition flex items-center justify-between group";
+                child.querySelector('i').className = "fa-regular fa-circle text-slate-300 group-hover:text-emerald-500 text-lg";
+            });
+
+            // Highlight selected
+            btnElement.className = "w-full text-left p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50 transition flex items-center justify-between";
+            btnElement.querySelector('i').className = "fa-solid fa-circle-check text-emerald-600 text-lg";
+
+            // Enable Next Button
+            const btnNext = document.getElementById('btn-next-quiz');
+            btnNext.disabled = false;
+            btnNext.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        function nextQuestion() {
+            if (selectedOptionIdx === null) return;
+
+            // Check Answer
+            if (selectedOptionIdx === quizQuestions[currentQuestionIdx].answer) {
+                score += 20; // 5 questions * 20 = 100 max
+            }
+
+            currentQuestionIdx++;
+
+            if (currentQuestionIdx < quizQuestions.length) {
+                loadQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-play-box').classList.add('hidden');
+            document.getElementById('quiz-result-box').classList.remove('hidden');
+
+            document.getElementById('quiz-final-score').innerText = score;
+            
+            const feedback = document.getElementById('quiz-feedback-text');
+            if (score >= 80) {
+                feedback.innerText = "Luar biasa! Pemahaman sains kamu sangat hebat!";
+            } else if (score >= 60) {
+                feedback.innerText = "Bagus! Kamu sudah memahami konsep dasar IPA dengan baik.";
+            } else {
+                feedback.innerText = "Jangan berkecil hati, yuk pelajari lagi materinya dan coba kembali!";
+            }
+        }
+
+        // Initialize App on DOM Load
+        window.onload = function() {
+            renderMateri(materiData);
+            updateSimulasi();
+        };
+    </script>
+</body>
+</html>
